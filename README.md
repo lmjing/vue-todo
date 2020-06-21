@@ -3,7 +3,6 @@
 - 20.06.21 localStorage 사용해서 간단한 Todo 데이터 관리
 - 차후 과제 : Vuex 도입해서 refresh 없이도 데이터 변경 즉시 UI에 표시되도록 
 
------
 
 ## Project setup
 ```
