@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span>
+        <span class="todo-input">
             <v-text-field
                     v-model="newTodoItem"
                     label="새로운 TODO"
@@ -36,5 +36,9 @@
 </script>
 
 <style scoped>
-
+    .todo-input {
+        display: inline-block;
+        width: 88%;
+        margin-right: 2%;
+    }
 </style>
