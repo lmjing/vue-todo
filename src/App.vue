@@ -31,7 +31,9 @@ export default {
 
 <style scoped>
   #app {
+    margin: 100px;
+  }
+  body {
     background: #fafafa;
-    padding: 100px;
   }
 </style>
