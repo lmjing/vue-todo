@@ -23,8 +23,13 @@
         },
         methods: {
             addTodo: function () {
-                localStorage.setItem(this.newTodoItem, this.newTodoItem);
+                let newItem = {
+                    text: this.newTodoItem,
+                    done: false
+                };
+                localStorage.setItem(newItem.text, JSON.stringify(newItem));
                 this.newTodoItem = "";
+                newItem = null;
             }
         }
     }
