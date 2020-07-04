@@ -1,10 +1,10 @@
 <template>
     <div>
         <ul id="todo-list">
-            <li v-for="(todoItem, i) in todoList" v-bind:key="i" class="todo-item" v-on:click="toggleTodo(i)">
+            <li v-for="(todoItem, i) in this.$store.state.todoItems" v-bind:key="i" class="todo-item" @click="toggleTodo(i)">
                 <v-icon v-if="!todoItem.done">mdi-check</v-icon>
                 {{todoItem.text}}
-                <v-icon color="#ef2121" class="todo-remove" v-on:click.stop="todoDelete(i)">mdi-delete-outline</v-icon>
+                <v-icon color="#ef2121" class="todo-remove" @click.stop="todoDelete(i)">mdi-delete-outline</v-icon>
             </li>
         </ul>
     </div>
@@ -16,10 +16,10 @@
         props: ['todoList'],
         methods: {
             todoDelete (i) {
-                this.$emit('deleteItem', i);
+                this.$store.commit('deleteOneItem', i);
             },
             toggleTodo (i) {
-                this.$emit('toggleItem', i);
+                this.$store.commit('toggleOneItem', i);
             }
         }
     }

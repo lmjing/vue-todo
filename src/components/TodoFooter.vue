@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-btn class="ma-2 clear-btn" tile color="indigo" dark v-on:click="clearAll">
+        <v-btn class="ma-2 clear-btn" tile color="indigo" dark @click="clearAll">
             clear All Todo
         </v-btn>
     </div>
@@ -11,7 +11,7 @@
         name: "TodoFooter",
         methods: {
             clearAll() {
-                this.$emit('clearItems');
+                this.$store.commit('clearAllTodo');
             }
         }
     }

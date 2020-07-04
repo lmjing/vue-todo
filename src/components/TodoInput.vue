@@ -5,9 +5,10 @@
                     v-model="newTodoItem"
                     label="새로운 TODO"
                     required
+                    @keyup.enter="addTodo"
             ></v-text-field>
         </span>
-        <v-btn class="mx-1" small fab dark color="primary" v-on:click="addTodo">
+        <v-btn class="mx-1" small fab dark color="primary" @click="addTodo">
             <v-icon dark>mdi-plus</v-icon>
         </v-btn>
     </div>
@@ -24,7 +25,7 @@
         methods: {
             addTodo() {
                 if (this.newTodoItem !== '') {
-                    this.$emit('addItem', this.newTodoItem);
+                    this.$store.commit('addOneItem', this.newTodoItem);
                     this.clearInput();
                 }
             },
