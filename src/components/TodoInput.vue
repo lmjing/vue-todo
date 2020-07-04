@@ -18,18 +18,18 @@
         name: "TodoInput",
         data: function () {
             return {
-                newTodoItem: ""
+                newTodoItem: ''
             }
         },
         methods: {
-            addTodo: function () {
-                let newItem = {
-                    text: this.newTodoItem,
-                    done: false
-                };
-                localStorage.setItem(newItem.text, JSON.stringify(newItem));
-                this.newTodoItem = "";
-                newItem = null;
+            addTodo() {
+                if (this.newTodoItem !== '') {
+                    this.$emit('addItem', this.newTodoItem);
+                    this.clearInput();
+                }
+            },
+            clearInput() {
+                this.newTodoItem = '';
             }
         }
     }

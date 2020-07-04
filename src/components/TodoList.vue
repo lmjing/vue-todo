@@ -13,30 +13,13 @@
 <script>
     export default {
         name: "TodoList",
-        data: function () {
-            return {
-                todoList: []
-            }
-        },
+        props: ['todoList'],
         methods: {
-            todoDelete: function (i) {
-                localStorage.removeItem(this.todoList[i].text);
-                this.todoList.splice(i, 1);
+            todoDelete (i) {
+                this.$emit('deleteItem', i);
             },
-            toggleTodo: function (i) {
-                this.todoList[i].done = !this.todoList[i].done;
-                localStorage.setItem(this.todoList[i].text, JSON.stringify(this.todoList[i]));
-            }
-        },
-        created: function() {
-            if (localStorage.length <= 1) return;
-
-            for (let i=0; i<localStorage.length; i++) {
-                let key = localStorage.key(i);
-                if (key !== 'loglevel:webpack-dev-server') {
-                    this.todoList.push(JSON.parse(localStorage.getItem(key)));
-                }
-                key = null;
+            toggleTodo (i) {
+                this.$emit('toggleItem', i);
             }
         }
     }
