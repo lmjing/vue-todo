@@ -4,7 +4,7 @@
             <li v-for="(todoItem, i) in todoList" v-bind:key="i" class="todo-item" v-on:click="toggleTodo(i)">
                 <v-icon v-if="!todoItem.done">mdi-check</v-icon>
                 {{todoItem.text}}
-                <v-icon color="primary" v-on:click.stop="todoDelete(i)">mdi-delete</v-icon>
+                <v-icon color="#ef2121" class="todo-remove" v-on:click.stop="todoDelete(i)">mdi-delete-outline</v-icon>
             </li>
         </ul>
     </div>
@@ -27,14 +27,24 @@
 
 <style scoped>
     .todo-item {
-        background: #ffffff;
+        background: #fafafa;
         line-height: 50px;
         height: 50px;
         margin: 10px 0;
         padding: 0 20px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px #48484830;
+        position: relative;
+        margin-right: 10px;
     }
 
     #todo-list {
         list-style: none;
+    }
+    .todo-remove {
+        position: absolute;
+        right: 0;
+        line-height: 50px;
+        margin-right: 10px;
     }
 </style>
