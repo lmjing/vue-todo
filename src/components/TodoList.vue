@@ -2,7 +2,7 @@
     <div>
         <ul id="todo-list">
             <li v-for="(todoItem, i) in this.storedTodoItems" v-bind:key="i" class="todo-item" @click="toggleTodo(i)">
-                <v-icon v-if="!todoItem.done">mdi-check</v-icon>
+                <v-icon v-if="todoItem.done">mdi-check</v-icon>
                 {{todoItem.text}}
                 <v-icon color="#ef2121" class="todo-remove" @click.stop="todoDelete(i)">mdi-delete-outline</v-icon>
             </li>
@@ -38,7 +38,6 @@
         border-radius: 10px;
         box-shadow: 5px 5px 5px #48484830;
         position: relative;
-        margin-right: 10px;
     }
 
     #todo-list {
