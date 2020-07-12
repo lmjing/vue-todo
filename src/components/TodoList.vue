@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul id="todo-list">
-            <li v-for="(todoItem, i) in this.$store.state.todoItems" v-bind:key="i" class="todo-item" @click="toggleTodo(i)">
+            <li v-for="(todoItem, i) in this.todoItems" v-bind:key="i" class="todo-item" @click="toggleTodo(i)">
                 <v-icon v-if="!todoItem.done">mdi-check</v-icon>
                 {{todoItem.text}}
                 <v-icon color="#ef2121" class="todo-remove" @click.stop="todoDelete(i)">mdi-delete-outline</v-icon>
@@ -20,6 +20,11 @@
             },
             toggleTodo (i) {
                 this.$store.commit('toggleOneItem', i);
+            }
+        },
+        computed: {
+            todoItems() {
+                return this.$store.getters.storedTodoItems;
             }
         }
     }
