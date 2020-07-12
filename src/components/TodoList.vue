@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul id="todo-list">
-            <li v-for="(todoItem, i) in this.todoItems" v-bind:key="i" class="todo-item" @click="toggleTodo(i)">
+            <li v-for="(todoItem, i) in this.storedTodoItems" v-bind:key="i" class="todo-item" @click="toggleTodo(i)">
                 <v-icon v-if="!todoItem.done">mdi-check</v-icon>
                 {{todoItem.text}}
                 <v-icon color="#ef2121" class="todo-remove" @click.stop="todoDelete(i)">mdi-delete-outline</v-icon>
@@ -11,21 +11,19 @@
 </template>
 
 <script>
+    import { mapGetters, mapMutations } from 'vuex';
+
     export default {
         name: "TodoList",
         props: ['todoList'],
         methods: {
-            todoDelete (i) {
-                this.$store.commit('deleteOneItem', i);
-            },
-            toggleTodo (i) {
-                this.$store.commit('toggleOneItem', i);
-            }
+            ...mapMutations({
+                todoDelete: 'deleteOneItem',
+                toggleTodo: 'toggleOneItem'
+            }),
         },
         computed: {
-            todoItems() {
-                return this.$store.getters.storedTodoItems;
-            }
+            ...mapGetters(['storedTodoItems']),
         }
     }
 </script>
