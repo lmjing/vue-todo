@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const STORAGE_LIST_KEY = 'TODO_LIST';
 const storage = {
     fetch() {
@@ -53,7 +55,6 @@ const actions = {
             .then((response) => {
                 if (response.status === 200) {
                     context.commit('setList', response.data || []);
-                    console.log(response);
                 } else {
                     console.log('error');
                 }

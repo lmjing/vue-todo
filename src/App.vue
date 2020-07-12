@@ -12,26 +12,26 @@
   import TodoInput from './components/TodoInput.vue';
   import TodoList from './components/TodoList.vue';
   import TodoFooter from './components/TodoFooter.vue';
+  import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'App',
-
   components: {
     TodoHeader,
     TodoInput,
     TodoList,
     TodoFooter,
   },
-  data: () => ({
-    todoItems: []
-  }),
+  computed: {
+    ...mapGetters(['storedTodoItems']),
+  },
+  methods: {
+    ...mapActions(['initList']),
+  },
   created() {
-    console.log(this.$store.state.todoItems);
-    if (this.$store.state.todoItems.length === 0) {
-      this.$store.dispatch('initList');
-      console.log('데이터가 업승');
+    if (this.storedTodoItems.length === 0) {
+      this.initList();
     }
-    console.log('데이터가 있응');
   }
 };
 </script>
