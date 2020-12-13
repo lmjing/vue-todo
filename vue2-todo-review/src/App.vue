@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <todo-header></todo-header>
-    <todo-input></todo-input>
     <todo-list></todo-list>
     <todo-footer></todo-footer>
   </v-app>
@@ -9,7 +8,6 @@
 
 <script>
   import TodoHeader from "./components/TodoHeader";
-  import TodoInput from "./components/TodoInput";
   import TodoList from "./components/TodoList";
   import TodoFooter from "./components/TodoFooter";
 
@@ -18,7 +16,6 @@ export default {
 
   components: {
     TodoHeader,
-    TodoInput,
     TodoList,
     TodoFooter
   },
@@ -28,3 +25,8 @@ export default {
   }),
 };
 </script>
+
+<style>
+  @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+  .v-application { font-family: "Noto Sans KR", sans-serif !important; }
+</style>
