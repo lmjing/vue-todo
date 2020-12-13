@@ -2,8 +2,7 @@
     <v-card
             color="grey lighten-4"
             flat
-            height="110px"
-            tile
+            height="120px"
     >
         <v-toolbar
             color="elevation-0">
