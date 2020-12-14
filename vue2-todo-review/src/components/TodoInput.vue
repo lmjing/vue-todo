@@ -28,7 +28,11 @@
         methods: {
             addTodo () {
                 const today = this.$moment().format('YYYY-MM-DD hh:mm');
-                const newItem = JSON.stringify({todo: this.newTodoItem, created: today});
+                const newItem = JSON.stringify({
+                    todo: this.newTodoItem,
+                    created: today,
+                    done: false
+                });
                 localStorage.setItem(this.newTodoItem, newItem);
                 this.clearInput();
             },
