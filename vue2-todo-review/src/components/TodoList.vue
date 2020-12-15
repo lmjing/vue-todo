@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr
-                        v-for="(item, idx) in todoItems"
+                        v-for="(item, idx) in propsitem"
                         :key="item.todo"
                         @click="checkItem(item)"
                         :class="item.done ? 'done' : ''"
@@ -48,22 +48,9 @@
 <script>
     export default {
         name: "TodoList",
-        data: function () {
-            return {
-                todoItems: []
-            }
-        },
-        created() {
-            if (localStorage.length > 0) {
-                for (let i=0; i<localStorage.length; i++) {
-                    const key = localStorage.key(i);
-                    if (key !== "loglevel:webpack-dev-server") {
-                        let value = JSON.parse(localStorage.getItem(localStorage.key(i)));
-                        this.todoItems.push(value);
-                    }
-                }
-            }
-        },
+        props: [
+          "propsitem"
+        ],
         methods: {
             deleteItem (item, idx) {
                 this.todoItems.splice(idx, 1);
