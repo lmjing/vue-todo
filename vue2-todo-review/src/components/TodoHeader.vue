@@ -10,7 +10,7 @@
                     class="font-weight-black text-uppercase title teal--text"
             >Todo It!</v-toolbar-title>
         </v-toolbar>
-        <todo-input></todo-input>
+        <todo-input v-on:addTodo="addTodo"></todo-input>
     </v-card>
 </template>
 
@@ -19,6 +19,11 @@
 
     export default {
         name: "TodoHeader",
+        methods: {
+          addTodo(todo) {
+              this.$emit("addTodo", todo);
+          }
+        },
         components: {
             TodoInput,
         }

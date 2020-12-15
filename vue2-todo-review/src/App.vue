@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <todo-header></todo-header>
+    <todo-header v-on:addTodo="addOneItem"></todo-header>
     <todo-list v-bind:propsitem="todoItems"></todo-list>
     <todo-footer></todo-footer>
   </v-app>
@@ -21,6 +21,18 @@ export default {
   data: function () {
     return {
       todoItems: []
+    }
+  },
+  methods: {
+    addOneItem(todo) {
+      const today = this.$moment().format('YYYY-MM-DD hh:mm');
+      const newItem = {
+        todo,
+        created: today,
+        done: false
+      };
+      localStorage.setItem(todo, JSON.stringify(newItem));
+      this.todoItems.push(newItem);
     }
   },
   created() {
