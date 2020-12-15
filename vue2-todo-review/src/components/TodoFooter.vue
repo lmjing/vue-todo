@@ -1,22 +1,46 @@
 <template>
-    <div class="pa-5">
-        <v-btn block outlined
-               color="teal"
-               @click="clearAll"
+    <div>
+        <div class="pa-5">
+            <v-btn block outlined
+                   color="teal"
+                   @click.stop="showModal = true"
+            >
+                Clear All
+            </v-btn>
+        </div>
+        <modal
+                @close="closeModal"
+                @confirm="clearAll"
+                v-bind:showDialog="showModal"
         >
-            Clear All
-        </v-btn>
+            <h3 slot="header">전체삭제</h3>
+            <div slot="content">전체 내용이 삭제 됩니다. 정말 삭제하시겠습니까?</div>
+        </modal>
     </div>
 </template>
 
 <script>
+    import Modal from './common/Modal';
+
     export default {
         name: "TodoFooter",
+        components: {
+            Modal
+        },
+        data() {
+          return {
+              showModal: false
+          }
+        },
         methods: {
             clearAll () {
-                localStorage.clear();
+                this.closeModal();
+                this.$emit('clearAllTodo');
+            },
+            closeModal () {
+                this.showModal = false;
             }
-        }
+        },
     }
 </script>
 

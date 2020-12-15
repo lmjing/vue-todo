@@ -8,7 +8,7 @@
             v-on:checkTodo="checkOneItem"
     />
     </body>
-    <todo-footer/>
+    <todo-footer @clearAllTodo="clearItems"/>
   </v-app>
 </template>
 
@@ -49,6 +49,10 @@ export default {
       item.done = !item.done;
       localStorage.setItem(item.todo, JSON.stringify(item));
       item = null;
+    },
+    clearItems() {
+      localStorage.clear();
+      this.todoItems = [];
     }
   },
   created() {
