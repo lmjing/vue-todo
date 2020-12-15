@@ -1,8 +1,14 @@
 <template>
   <v-app>
-    <todo-header v-on:addTodo="addOneItem"></todo-header>
-    <todo-list v-bind:propsitem="todoItems"></todo-list>
-    <todo-footer></todo-footer>
+    <todo-header v-on:addTodo="addOneItem"/>
+    <body>
+    <todo-list
+            v-bind:propsitem="todoItems"
+            v-on:removeTodo="removeOneItem"
+            v-on:checkTodo="checkOneItem"
+    />
+    </body>
+    <todo-footer/>
   </v-app>
 </template>
 
@@ -33,6 +39,16 @@ export default {
       };
       localStorage.setItem(todo, JSON.stringify(newItem));
       this.todoItems.push(newItem);
+    },
+    removeOneItem(item, idx) {
+      this.todoItems.splice(idx, 1);
+      localStorage.removeItem(item.todo);
+    },
+    checkOneItem(idx) {
+      let item = this.todoItems[idx];
+      item.done = !item.done;
+      localStorage.setItem(item.todo, JSON.stringify(item));
+      item = null;
     }
   },
   created() {

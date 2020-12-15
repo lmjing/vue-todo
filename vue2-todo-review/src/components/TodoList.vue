@@ -3,21 +3,21 @@
         <template v-slot:default>
             <thead>
                 <tr>
-                    <th width="5%"></th>
+                    <th width="5%"/>
                     <th width="60%" class="text-left">
                         Todo
                     </th>
                     <th width="20%" class="text-left">
                         Created
                     </th>
-                    <th width="5%"></th>
+                    <th width="5%"/>
                 </tr>
             </thead>
             <tbody>
                 <tr
                         v-for="(item, idx) in propsitem"
                         :key="item.todo"
-                        @click="checkItem(item)"
+                        @click="checkItem(idx)"
                         :class="item.done ? 'done' : ''"
                         class="todo-item"
                 >
@@ -34,7 +34,7 @@
                     <td>
                         <v-icon
                                 small
-                                @click="deleteItem(item, idx)"
+                                @click.stop="removeItem(item, idx)"
                         >
                             mdi-delete
                         </v-icon>
@@ -52,13 +52,11 @@
           "propsitem"
         ],
         methods: {
-            deleteItem (item, idx) {
-                this.todoItems.splice(idx, 1);
-                localStorage.removeItem(item.todo);
+            removeItem (item, idx) {
+                this.$emit("removeTodo", item, idx);
             },
-            checkItem (item) {
-                item.done = !item.done;
-                localStorage.setItem(item.todo, JSON.stringify(item));
+            checkItem (idx) {
+                this.$emit("checkTodo", idx);
             }
         }
     }

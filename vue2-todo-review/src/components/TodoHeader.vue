@@ -10,7 +10,7 @@
                     class="font-weight-black text-uppercase title teal--text"
             >Todo It!</v-toolbar-title>
         </v-toolbar>
-        <todo-input v-on:addTodo="addTodo"></todo-input>
+        <todo-input v-on:addTodo="addTodo"/>
     </v-card>
 </template>
 
