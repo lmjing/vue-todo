@@ -1,6 +1,6 @@
 <template>
     <v-simple-table>
-        <template v-slot:default>
+        <template>
             <thead>
                 <tr>
                     <th width="5%"/>
@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr
-                        v-for="(item, idx) in propsitem"
+                        v-for="(item, idx) in this.$store.state.todoItems"
                         :key="item.todo"
                         @click="checkItem(idx)"
                         :class="item.done ? 'done' : ''"

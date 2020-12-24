@@ -55,17 +55,17 @@ export default {
       this.todoItems = [];
     }
   },
-  created() {
-    if (localStorage.length > 0) {
-      for (let i=0; i<localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key !== "loglevel:webpack-dev-server") {
-          let value = JSON.parse(localStorage.getItem(localStorage.key(i)));
-          this.todoItems.push(value);
-        }
-      }
-    }
-  },
+  // created() {
+  //   if (localStorage.length > 0) {
+  //     for (let i=0; i<localStorage.length; i++) {
+  //       const key = localStorage.key(i);
+  //       if (key !== "loglevel:webpack-dev-server") {
+  //         let value = JSON.parse(localStorage.getItem(localStorage.key(i)));
+  //         this.todoItems.push(value);
+  //       }
+  //     }
+  //   }
+  // },
 };
 </script>
 
