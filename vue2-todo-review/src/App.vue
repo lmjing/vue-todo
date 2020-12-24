@@ -20,11 +20,11 @@ export default {
     TodoList,
     TodoFooter
   },
-  data: function () {
-    return {
-      todoItems: []
+  created() {
+    if (this.$store.getters.getTodoItems.length === 0) {
+      this.$store.dispatch('getDefaultTodo');
     }
-  },
+  }
 };
 </script>
 
