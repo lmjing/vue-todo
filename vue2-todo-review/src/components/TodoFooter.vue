@@ -21,6 +21,7 @@
 
 <script>
     import Modal from './common/Modal';
+    import { mapMutations } from 'vuex';
 
     export default {
         name: "TodoFooter",
@@ -33,9 +34,10 @@
           }
         },
         methods: {
+            ...mapMutations(['clearItems']),
             clearAll () {
                 this.closeModal();
-                this.$store.commit('clearAllTodo');
+                this.clearItems();
             },
             closeModal () {
                 this.showModal = false;

@@ -10,7 +10,7 @@
                     class="font-weight-black text-uppercase title teal--text"
             >Todo It!</v-toolbar-title>
         </v-toolbar>
-        <todo-input v-on:addTodo="addTodo"/>
+        <todo-input/>
     </v-card>
 </template>
 
@@ -18,12 +18,6 @@
     import TodoInput from "./TodoInput";
 
     export default {
-        name: "TodoHeader",
-        methods: {
-          addTodo(todo) {
-              this.$store.commit('addOneItem', todo);
-          }
-        },
         components: {
             TodoInput,
         }

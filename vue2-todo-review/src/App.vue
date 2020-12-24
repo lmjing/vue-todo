@@ -12,6 +12,7 @@
   import TodoHeader from "./components/TodoHeader";
   import TodoList from "./components/TodoList";
   import TodoFooter from "./components/TodoFooter";
+  import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
@@ -20,9 +21,12 @@ export default {
     TodoList,
     TodoFooter
   },
+  methods: {
+    ...mapActions(['getDefaultTodo'])
+  },
   created() {
     if (this.$store.getters.getTodoItems.length === 0) {
-      this.$store.dispatch('getDefaultTodo');
+      this.getDefaultTodo();
     }
   }
 };

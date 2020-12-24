@@ -17,7 +17,7 @@
                 <tr
                         v-for="(item, idx) in this.$store.state.todoItems"
                         :key="item.todo"
-                        @click="checkItem(idx)"
+                        @click="checkOneItem(idx)"
                         :class="item.done ? 'done' : ''"
                         class="todo-item"
                 >
@@ -34,7 +34,7 @@
                     <td>
                         <v-icon
                                 small
-                                @click.stop="removeItem(item, idx)"
+                                @click.stop="removeOneItem({item, idx})"
                         >
                             mdi-delete
                         </v-icon>
@@ -46,15 +46,12 @@
 </template>
 
 <script>
+    import { mapMutations } from 'vuex';
+
     export default {
         name: "TodoList",
         methods: {
-            removeItem (item, idx) {
-                this.$store.commit('removeOneItem', {item, idx});
-            },
-            checkItem (idx) {
-                this.$store.commit('checkOneItem', idx);
-            }
+            ...mapMutations(['removeOneItem', 'checkOneItem']),
         }
     }
 </script>
