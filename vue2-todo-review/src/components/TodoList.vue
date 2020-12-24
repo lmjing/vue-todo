@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr
-                        v-for="(item, idx) in this.$store.state.todoItems"
+                        v-for="(item, idx) in this.getTodoItems"
                         :key="item.todo"
                         @click="checkOneItem(idx)"
                         :class="item.done ? 'done' : ''"
@@ -46,10 +46,13 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex';
+    import { mapMutations, mapGetters } from 'vuex';
 
     export default {
         name: "TodoList",
+        computed: {
+            ...mapGetters(['getTodoItems']),
+        },
         methods: {
             ...mapMutations(['removeOneItem', 'checkOneItem']),
         }
