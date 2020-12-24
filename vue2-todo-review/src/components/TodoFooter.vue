@@ -29,9 +29,9 @@
             Modal
         },
         data() {
-          return {
-              showModal: false
-          }
+            return {
+                showModal: false
+            }
         },
         methods: {
             ...mapMutations(['clearItems']),

@@ -5,7 +5,7 @@
             height="120px"
     >
         <v-toolbar
-            color="elevation-0">
+                color="elevation-0">
             <v-toolbar-title
                     class="font-weight-black text-uppercase title teal--text"
             >Todo It!</v-toolbar-title>

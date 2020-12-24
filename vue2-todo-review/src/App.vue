@@ -14,22 +14,22 @@
   import TodoFooter from "./components/TodoFooter";
   import { mapActions } from 'vuex';
 
-export default {
-  name: 'App',
-  components: {
-    TodoHeader,
-    TodoList,
-    TodoFooter
-  },
-  methods: {
-    ...mapActions(['getDefaultTodo'])
-  },
-  created() {
-    if (this.$store.getters.getTodoItems.length === 0) {
-      this.getDefaultTodo();
+  export default {
+    name: 'App',
+    components: {
+      TodoHeader,
+      TodoList,
+      TodoFooter
+    },
+    methods: {
+      ...mapActions(['getDefaultTodo'])
+    },
+    created() {
+      if (this.$store.getters.getTodoItems.length === 0) {
+        this.getDefaultTodo();
+      }
     }
-  }
-};
+  };
 </script>
 
 <style>
