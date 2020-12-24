@@ -35,7 +35,7 @@
         methods: {
             clearAll () {
                 this.closeModal();
-                this.$emit('clearAllTodo');
+                this.$store.commit('clearAllTodo');
             },
             closeModal () {
                 this.showModal = false;

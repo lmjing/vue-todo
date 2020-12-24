@@ -48,15 +48,12 @@
 <script>
     export default {
         name: "TodoList",
-        props: [
-          "propsitem"
-        ],
         methods: {
             removeItem (item, idx) {
-                this.$emit("removeTodo", item, idx);
+                this.$store.commit('removeOneItem', {item, idx});
             },
             checkItem (idx) {
-                this.$emit("checkTodo", idx);
+                this.$store.commit('checkOneItem', idx);
             }
         }
     }
